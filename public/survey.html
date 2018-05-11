@@ -29,12 +29,12 @@
               <div class="form-group">
                 <h4 class="panel-title">About you</h4>
                 <label for="reserve-name">Name (Required)</label>
-                <input type="text" class="form-control" id="reserve-name">
+                <input type="text" class="form-control" id="friend-name">
               </div>
 
               <div class="form-group">
                 <label for="reserve-phone">Link to Photo (Required)</label>
-                <input type="text" class="form-control" id="reserve-phone">
+                <input type="text" class="form-control" id="friend-phone">
               </div>
 
               <hr>
@@ -42,8 +42,8 @@
 
               <div class="form-group">
                 <h4 class="panel-title">Question 1</h4>
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="exampleFormControlSelect1">Your mind is always buzzing with unexplored ideas and plans.</label>
+                <select class="form-control" id="friendQuestion1">
                   <option hidden>Select an Option</option>
                   <option>1</option>
                   <option>2</option>
@@ -55,8 +55,8 @@
 
               <div class="form-group">
                 <h4 class="panel-title">Question 2</h4>
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="exampleFormControlSelect1">Generally speaking, you rely more on your experience than your imagination.</label>
+                <select class="form-control" id="friendQuestion2">
                   <option hidden>Select an Option</option>
                   <option>1</option>
                   <option>2</option>
@@ -68,8 +68,8 @@
 
               <div class="form-group">
                 <h4 class="panel-title">Question 3</h4>
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="exampleFormControlSelect1">You find it easy to stay relaxed and focused even when there is some pressure.</label>
+                <select class="form-control" id="friendQuestion3">
                   <option hidden>Select an Option</option>
                   <option>1</option>
                   <option>2</option>
@@ -81,8 +81,8 @@
 
               <div class="form-group">
                 <h4 class="panel-title">Question 4</h4>
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="exampleFormControlSelect1">You rarely do something just out of sheer curiosity.</label>
+                <select class="form-control" id="friendQuestion4">
                   <option hidden>Select an Option</option>
                   <option>1</option>
                   <option>2</option>
@@ -94,8 +94,8 @@
 
               <div class="form-group">
                 <h4 class="panel-title">Question 5</h4>
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="exampleFormControlSelect1">People can rarely upset you.</label>
+                <select class="form-control" id="friendQuestion5">
                   <option hidden>Select an Option</option>
                   <option>1</option>
                   <option>2</option>
@@ -142,21 +142,24 @@
       event.preventDefault();
 
       // Here we grab the form elements
-      var newReservation = {
-        customerName: $("#reserve-name").val().trim(),
-        phoneNumber: $("#reserve-phone").val().trim(),
-        customerEmail: $("#reserve-email").val().trim(),
-        customerID: $("#reserve-unique-id").val().trim()
+      var friendsData = {
+        customerName: $("#friend-name").val().trim(),
+        customerEmail: $("#friend-phone").val().trim(),
+        response1: $("#friendQuestion1").val().trim(),
+        response2: $("#friendQuestion2").val().trim(),
+        response3: $("#friendQuestion3").val().trim(),
+        response4: $("#friendQuestion4").val().trim(),
+        response5: $("#friendQuestion5").val().trim(),
       };
 
-      console.log(newReservation);
+      console.log(friendsData);
 
       // This line is the magic. It"s very similar to the standard ajax function we used.
       // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
       // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
       // depending on if a tables is available or not.
 
-      $.post("/api/tables", newReservation,
+      $.post("/api/friends", friendsData,
         function(data) {
 
           // If a table is available... tell user they are booked.
@@ -170,10 +173,14 @@
           }
 
           // Clear the form when submitting
-          $("#reserve-name").val("");
-          $("#reserve-phone").val("");
-          $("#reserve-email").val("");
-          $("#reserve-unique-id").val("");
+          $("#friend-name").val("");
+          $("#friend-phone").val("");
+          $("#friendQuestion1").val("");
+          $("#friendQuestion2").val("");
+          $("#friendQuestion3").val("");
+          $("#friendQuestion4").val("");
+          $("#friendQuestion5").val("");
+
 
         });
 
