@@ -4,7 +4,7 @@
 // These data sources hold arrays of information on table-data, waitinglist, etc.
 // ===============================================================================
 
-var tableData = require("../app/friends");
+var friendsData = require("../app/friends");
 
 
 // ===============================================================================
@@ -18,13 +18,13 @@ module.exports = function(app) {
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
 
-  app.get("/api/tables", function(req, res) {
-    res.json(tableData);
+  app.get("/api/friends", function(req, res) {
+    res.json(friendsData);
   });
 
-  app.get("/api/waitlist", function(req, res) {
-    res.json(waitListData);
-  });
+//   app.get("/api/waitlist", function(req, res) {
+//     res.json(waitListData);
+//   });
 
   // API POST Requests
   // Below code handles when a user submits a form and thus submits data to the server.
@@ -57,6 +57,6 @@ module.exports = function(app) {
     tableData = [];
     waitListData = [];
 
-    console.log(tableData);
+    console.log(friendsData);
   });
 };

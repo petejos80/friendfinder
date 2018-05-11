@@ -5,7 +5,7 @@
 // But you could have it be an empty array as well.
 // ===============================================================================
 
-var tableArray = [
+var friendsData = [
     {
       customerName: "Ahmed",
       customerEmail: "ahmed@example.com",
@@ -15,5 +15,5 @@ var tableArray = [
   ];
   
   // Note how we export the array. This makes it accessible to other files using require.
-  module.exports = tableArray;
+  module.exports = friendsData;
   
