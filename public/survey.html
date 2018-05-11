@@ -34,7 +34,7 @@
 
               <div class="form-group">
                 <label for="reserve-phone">Link to Photo (Required)</label>
-                <input type="text" class="form-control" id="friend-phone">
+                <input type="text" class="form-control" id="friend-photo">
               </div>
 
               <hr>
@@ -143,8 +143,8 @@
 
       // Here we grab the form elements
       var friendsData = {
-        customerName: $("#friend-name").val().trim(),
-        customerEmail: $("#friend-phone").val().trim(),
+        friendName: $("#friend-name").val().trim(),
+        friendPhoto: $("#friend-photo").val().trim(),
         response1: $("#friendQuestion1").val().trim(),
         response2: $("#friendQuestion2").val().trim(),
         response3: $("#friendQuestion3").val().trim(),
@@ -174,7 +174,7 @@
 
           // Clear the form when submitting
           $("#friend-name").val("");
-          $("#friend-phone").val("");
+          $("#friend-photo").val("");
           $("#friendQuestion1").val("");
           $("#friendQuestion2").val("");
           $("#friendQuestion3").val("");
