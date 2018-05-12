@@ -145,14 +145,14 @@
       var friendsData = {
         friendName: $("#friend-name").val().trim(),
         friendPhoto: $("#friend-photo").val().trim(),
-        response1: $("#friendQuestion1").val().trim(),
-        response2: $("#friendQuestion2").val().trim(),
-        response3: $("#friendQuestion3").val().trim(),
-        response4: $("#friendQuestion4").val().trim(),
-        response5: $("#friendQuestion5").val().trim(),
+        scores: [
+        $("#friendQuestion1").val(),
+        $("#friendQuestion2").val(),
+        $("#friendQuestion3").val(),
+        $("#friendQuestion4").val(),
+        $("#friendQuestion5").val(),
+        ]
       };
-
-      console.log(friendsData);
 
       // This line is the magic. It"s very similar to the standard ajax function we used.
       // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
@@ -175,11 +175,11 @@
           // Clear the form when submitting
           $("#friend-name").val("");
           $("#friend-photo").val("");
-          $("#friendQuestion1").val("");
-          $("#friendQuestion2").val("");
-          $("#friendQuestion3").val("");
-          $("#friendQuestion4").val("");
-          $("#friendQuestion5").val("");
+          $("#friendQuestion1").val("Select an Option");
+          $("#friendQuestion2").val("Select an Option");
+          $("#friendQuestion3").val("Select an Option");
+          $("#friendQuestion4").val("Select an Option");
+          $("#friendQuestion5").val("Select an Option");
 
 
         });
