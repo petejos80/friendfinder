@@ -155,9 +155,11 @@
         scoresInt:[]
       };
 
-        reducer = (accumulator, currentValue) => accumulator + currentValue;
+      // scoresInt = parseInt
+
+        // reducer = (accumulator, currentValue) => accumulator + currentValue;
 // 1 + 2 + 3 + 4
-        console.log(friendsData.scores.reduce(reducer));
+        // console.log(friendsData.scores.reduce(reducer));
 // expected output: 10
 
 // 5 + 1 + 2 + 3 + 4
@@ -166,11 +168,18 @@
 
       for (i=0; i < friendsData.scores.length; i++)
       {
-        reduce(friendsData.scores[i]);
-        scoresInt = parseInt(friendsData.scores[i])
+        var scoresInt =+ parseInt(friendsData.scores[i], 10)
+        friendsData.scores[i] = +friendsData.scores[i];
       }
-      
-      console.log
+      // console.log(friendsData.scores);
+      // scoresSum = reduceRight(friendsData.scores);
+      // console.log(scoresSum);
+
+      // -----------------------------------------------------
+
+      var a = scoresInt[];
+      var sum = a.reduce(function(a, b) { return a + b; }, 0);
+      console.log(sum)
 
 
       // This line is the magic. It"s very similar to the standard ajax function we used.
