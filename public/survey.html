@@ -146,13 +146,23 @@
         friendName: $("#friend-name").val().trim(),
         friendPhoto: $("#friend-photo").val().trim(),
         scores: [
-        $("#friendQuestion1").val(),
+        $("#friendQuestion2").val(),
         $("#friendQuestion2").val(),
         $("#friendQuestion3").val(),
         $("#friendQuestion4").val(),
         $("#friendQuestion5").val(),
         ]
       };
+
+      for (i=0; i < friendsData.scores.length; i++)
+      {
+        // toString(friendsData.scores[i])
+        var potato = reduce(friendsData.scores[i])
+      }
+
+      console.log(potato);
+      
+
 
       // This line is the magic. It"s very similar to the standard ajax function we used.
       // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
