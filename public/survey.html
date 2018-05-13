@@ -7,7 +7,7 @@
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
@@ -58,11 +58,11 @@
                 <label for="exampleFormControlSelect1">Generally speaking, you rely more on your experience than your imagination.</label>
                 <select class="form-control" id="friendQuestion2">
                   <option hidden>Select an Option</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
                 </select>
               </div>
 
@@ -130,13 +130,8 @@
 </body>
 </html>
 
-<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+<!-- Send Data to Server -->
 <script type="text/javascript">
-
-    // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
-    // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
-    // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
-    // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
 
     $(".submit").on("click", function(event) {
       event.preventDefault();
@@ -152,30 +147,26 @@
         $("#friendQuestion4").val(),
         $("#friendQuestion5").val(),
         ],
-        scoresInt: 0
+        totalScore: 0
       };
 
-
-
-      // Convert responses from strings to integers
+      // Convert the string values to integers
       for (i=0; i < friendsData.scores.length; i++)
       {
         var scoresInt =+ parseInt(friendsData.scores[i], 10)
         friendsData.scores[i] = +friendsData.scores[i];
       }
-      console.log(friendsData.scores);
 
-
+      // Takes the sum of the integers and converts it to a 'total score'
+      var userScore = friendsData.scores
       
+      for (var i = 0; i < userScore.length; i++)
+      {
+        friendsData.totalScore += userScore[i]
+      }
       
-      
-      // Take the sum of all integers in friendsData array
-      var numbers = friendsData.scores
-      var add = (a, b) =>
-        a + b
-      var sum = numbers.reduce(add)
-      console.log(sum)
-
+      totalScore = friendsData.totalScore;
+      console.log(totalScore)
 
 
 
@@ -206,5 +197,4 @@
         });
 
     });
-
 </script>
