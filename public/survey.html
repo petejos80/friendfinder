@@ -152,41 +152,34 @@
         $("#friendQuestion4").val(),
         $("#friendQuestion5").val(),
         ],
-        scoresInt:[]
+        scoresInt: 0
       };
 
-      // scoresInt = parseInt
 
-        // reducer = (accumulator, currentValue) => accumulator + currentValue;
-// 1 + 2 + 3 + 4
-        // console.log(friendsData.scores.reduce(reducer));
-// expected output: 10
 
-// 5 + 1 + 2 + 3 + 4
-// console.log(array1.reduce(reducer, 5));
-// expected output: 15
-
+      // Convert responses from strings to integers
       for (i=0; i < friendsData.scores.length; i++)
       {
         var scoresInt =+ parseInt(friendsData.scores[i], 10)
         friendsData.scores[i] = +friendsData.scores[i];
       }
-      // console.log(friendsData.scores);
-      // scoresSum = reduceRight(friendsData.scores);
-      // console.log(scoresSum);
+      console.log(friendsData.scores);
 
-      // -----------------------------------------------------
 
-      var a = scoresInt[];
-      var sum = a.reduce(function(a, b) { return a + b; }, 0);
+      
+      
+      
+      // Take the sum of all integers in friendsData array
+      var numbers = friendsData.scores
+      var add = (a, b) =>
+        a + b
+      var sum = numbers.reduce(add)
       console.log(sum)
 
 
-      // This line is the magic. It"s very similar to the standard ajax function we used.
-      // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
-      // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
-      // depending on if a tables is available or not.
 
+
+      // Post data to friends Object
       $.post("/api/friends", friendsData,
         function(data) {
 
