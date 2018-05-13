@@ -38,27 +38,67 @@ module.exports = function(app) {
     // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
     // It will do this by sending out the value "true" have a table
     // req.body is available since we're using the body-parser middleware
-    if (friendsData.length < 5) {
+
       console.log("Success");
-      friendsData.push(req.body);
-      res.json(true);
-    }
-    else {
-      console.log("Error");
+      console.log(req.body)
+      // friendsData.push(req.body);
+      // res.json(true);
       // waitListData.push(req.body);
       // res.json(false);
-    }
+
+      var bestFriend = {
+        friendName: "",
+        friendPhoto: "", 
+        friendDif: 100
+      }
+
+      var submittedData = req.body
+      var submittedScores = submittedData.scores
+      var difference = null
+
+      for(i = 0; i < friendsData.length; i++) {
+        difference = 0
+        var currentFriend = friendsData[i]
+
+        for(j = 0; j < currentFriend.scores.length; j++) {
+        var currentFriendScore = currentFriend.scores[j]
+        var currentUserScore = submittedScores[j]
+        console.log(currentFriendScore, currentUserScore)
+        var total = Math.abs(currentUserScore - currentFriendScore)
+        console.log("Total", total)
+        difference += total
+        }
+        console.log("This is differnece",difference)
+        if (difference <= bestFriend.friendDif) {
+          console.log("This friend is better")
+          bestFriend.friendName = currentFriend.friendName
+          bestFriend.friendPhoto = currentFriend.friendPhoto
+          bestFriend.friendDif = difference
+        }
+
+      } 
+      friendsData.push(req.body);
+      res.json(bestFriend);
+
+      // res.send(true)
+    //Loop through friends array
+    //Compare frriends vs. submitted fata
+    //Create var for difference between friend and submitted score
+    // If total difference < previous friend then it becomes desireable friend
+    // res.send more desireable friend
+
+
   });
 
   // ---------------------------------------------------------------------------
   // I added this below code so you could clear out the table while working with the functionality.
   // Don"t worry about it!
 
-  app.post("/api/clear", function() {
-    // Empty out the arrays of data
-    friendsData = [];
-    waitListData = [];
+  // app.post("/api/clear", function() {
+  //   // Empty out the arrays of data
+  //   friendsData = [];
+  //   waitListData = [];
 
-    console.log(friendsData);
-  });
+  //   console.log(friendsData);
+  // });
 };

@@ -156,7 +156,9 @@
 
           // If a table is available... tell user they are booked.
           if (data) {
-            alert("Yay! You are officially booked!");
+            console.log(data)
+            alert("Your new best friend is" + data.friendName)
+            // alert("Yay! You are officially booked!");
           }
 
           // If a table is available... tell user they on the waiting list.
