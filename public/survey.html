@@ -150,13 +150,21 @@
         totalScore: 0
       };
 
+
+
+
       // Convert the string values to integers
       for (i=0; i < friendsData.scores.length; i++)
       {
         var scoresInt =+ parseInt(friendsData.scores[i], 10)
         friendsData.scores[i] = +friendsData.scores[i];
       }
+      console.log(friendsData.scores);
 
+
+
+
+      
       // Takes the sum of the integers and converts it to a 'total score'
       var userScore = friendsData.scores
       
@@ -167,6 +175,9 @@
       
       totalScore = friendsData.totalScore;
       console.log(totalScore)
+
+
+
 
 
 
