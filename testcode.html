@@ -147,7 +147,37 @@
         $("#friendQuestion4").val(),
         $("#friendQuestion5").val(),
         ],
+        // Test code for defining a sum
+        // totalScore: 0
       };
+
+
+
+
+      // TEST CODE ONLY - Convert the string values to integers
+      for (i=0; i < friendsData.scores.length; i++)
+      {
+        var scoresInt =+ parseInt(friendsData.scores[i], 10)
+        friendsData.scores[i] = +friendsData.scores[i];
+      }
+      console.log(friendsData.scores);
+
+
+
+
+
+      // TEST CODE ONLY - Takes the sum of the integers and converts it to a 'total score'
+      var userScore = friendsData.scores
+      
+      for (var i = 0; i < userScore.length; i++)
+      {
+        friendsData.totalScore += userScore[i]
+      }
+      
+      totalScore = friendsData.totalScore;
+      console.log(totalScore)
+
+
 
 
       // Post data to friends Object
@@ -172,6 +202,8 @@
           $("#friendQuestion3").val("Select an Option");
           $("#friendQuestion4").val("Select an Option");
           $("#friendQuestion5").val("Select an Option");
+
+
         });
 
     });
