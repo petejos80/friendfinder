@@ -180,7 +180,7 @@
               }
           });
           return isValid;
-      };
+        };
         if (validateForm()) {
           var friendsData = {
               friendName: $("#name").val(),
@@ -200,6 +200,7 @@
           // Display the best friend's name
           console.log(data)
           // alert("Your new best friend is " + data.friendName + "\n" + data.friendPhoto)
+          $ ("#myModal .modal-content").append("<p>" + friendsData.friendName + "</p>");
           $("#myModal").modal();
 
           // Clear the form after submission
