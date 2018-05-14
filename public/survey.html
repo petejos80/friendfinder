@@ -44,12 +44,12 @@
                 <h4 class="panel-title">Question 1</h4>
                 <label for="exampleFormControlSelect1">Your mind is always buzzing with unexplored ideas and plans.</label>
                 <select class="form-control" id="friendQuestion1">
-                  <option hidden>Select an Option</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option value=>Select an Option</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
 
@@ -57,12 +57,12 @@
                 <h4 class="panel-title">Question 2</h4>
                 <label for="exampleFormControlSelect1">Generally speaking, you rely more on your experience than your imagination.</label>
                 <select class="form-control" id="friendQuestion2">
-                  <option hidden>Select an Option</option>
-                  <option value=1>1</option>
-                  <option value=2>2</option>
-                  <option value=3>3</option>
-                  <option value=4>4</option>
-                  <option value=5>5</option>
+                  <option value=>Select an Option</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
 
@@ -70,12 +70,12 @@
                 <h4 class="panel-title">Question 3</h4>
                 <label for="exampleFormControlSelect1">You find it easy to stay relaxed and focused even when there is some pressure.</label>
                 <select class="form-control" id="friendQuestion3">
-                  <option hidden>Select an Option</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option value=>Select an Option</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
 
@@ -83,12 +83,12 @@
                 <h4 class="panel-title">Question 4</h4>
                 <label for="exampleFormControlSelect1">You rarely do something just out of sheer curiosity.</label>
                 <select class="form-control" id="friendQuestion4">
-                  <option hidden>Select an Option</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option value=>Select an Option</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
 
@@ -96,12 +96,12 @@
                 <h4 class="panel-title">Question 5</h4>
                 <label for="exampleFormControlSelect1">People can rarely upset you.</label>
                 <select class="form-control" id="friendQuestion5">
-                  <option hidden>Select an Option</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option value=>Select an Option</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
 
@@ -133,25 +133,33 @@
 <!-- Send Data to Server -->
 <script type="text/javascript">
 
+// Validate the form on click of submission button
     $(".submit").on("click", function(event) {
-      event.preventDefault();
-
-      // Here we grab the form elements
-      var friendsData = {
-        friendName: $("#friend-name").val().trim(),
-        friendPhoto: $("#friend-photo").val().trim(),
-        scores: [
-        $("#friendQuestion1").val(),
-        $("#friendQuestion2").val(),
-        $("#friendQuestion3").val(),
-        $("#friendQuestion4").val(),
-        $("#friendQuestion5").val(),
-        ],
+      event.preventDefault();  
+      function validateForm() {
+          var isValid = true;
+          $(".form-control").each(function () {
+              if ($(this).val() === "") {
+                  isValid = false;
+              }
+          });
+          return isValid;
       };
+        if (validateForm()) {
+          var friendsData = {
+              friendName: $("#name").val(),
+              friendPhoto: $("#photo").val(),
+              scores: [
+              $("#friendQuestion1").val(),
+              $("#friendQuestion2").val(),
+              $("#friendQuestion3").val(),
+              $("#friendQuestion4").val(),
+              $("#friendQuestion5").val()
+              ]
+          };
 
-      // Post data to friendsData object
-      $.post("/api/friends", friendsData,
-        function(data) {
+      // If form is validated, post data to friendsData object
+      $.post("/api/friends", friendsData, function(data) {
 
           // Display the best friend's name
           console.log(data)
@@ -160,12 +168,16 @@
           // Clear the form after submission
           $("#friend-name").val("");
           $("#friend-photo").val("");
-          $("#friendQuestion1").val("Select an Option");
-          $("#friendQuestion2").val("Select an Option");
-          $("#friendQuestion3").val("Select an Option");
-          $("#friendQuestion4").val("Select an Option");
-          $("#friendQuestion5").val("Select an Option");
+          $("#friendQuestion1").val();
+          $("#friendQuestion2").val();
+          $("#friendQuestion3").val();
+          $("#friendQuestion4").val();
+          $("#friendQuestion5").val();
         });
+
+      } else{
+            alert("Please fill out all fields")
+        }
 
     });
 </script>
