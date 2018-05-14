@@ -22,10 +22,6 @@ module.exports = function(app) {
     res.json(friendsData);
   });
 
-//   app.get("/api/waitlist", function(req, res) {
-//     res.json(waitListData);
-//   });
-
   // API POST Requests
   // Below code handles when a user submits a form and thus submits data to the server.
   // In each of the below cases, when a user submits form data (a JSON object)
@@ -35,16 +31,6 @@ module.exports = function(app) {
   // ---------------------------------------------------------------------------
 
   app.post("/api/friends", function(req, res) {
-    // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
-    // It will do this by sending out the value "true" have a table
-    // req.body is available since we're using the body-parser middleware
-
-      console.log("Success");
-      console.log(req.body)
-      // friendsData.push(req.body);
-      // res.json(true);
-      // waitListData.push(req.body);
-      // res.json(false);
 
       var bestFriend = {
         friendName: "",
@@ -80,25 +66,6 @@ module.exports = function(app) {
       friendsData.push(req.body);
       res.json(bestFriend);
 
-      // res.send(true)
-    //Loop through friends array
-    //Compare frriends vs. submitted fata
-    //Create var for difference between friend and submitted score
-    // If total difference < previous friend then it becomes desireable friend
-    // res.send more desireable friend
-
-
   });
 
-  // ---------------------------------------------------------------------------
-  // I added this below code so you could clear out the table while working with the functionality.
-  // Don"t worry about it!
-
-  // app.post("/api/clear", function() {
-  //   // Empty out the arrays of data
-  //   friendsData = [];
-  //   waitListData = [];
-
-  //   console.log(friendsData);
-  // });
 };

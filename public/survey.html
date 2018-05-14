@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-lg-12">
 
-        <!-- Reservation Page -->
+        <!-- Survey Page -->
 
             <form role="form">
 
@@ -149,24 +149,15 @@
         ],
       };
 
-
-      // Post data to friends Object
+      // Post data to friendsData object
       $.post("/api/friends", friendsData,
         function(data) {
 
-          // If a table is available... tell user they are booked.
-          if (data) {
-            console.log(data)
-            alert("Your new best friend is" + data.friendName)
-            // alert("Yay! You are officially booked!");
-          }
+          // Display the best friend's name
+          console.log(data)
+          alert("Your new best friend is " + data.friendName + "\n" + data.friendPhoto)
 
-          // If a table is available... tell user they on the waiting list.
-          else {
-            alert("Sorry you are on the wait list");
-          }
-
-          // Clear the form when submitting
+          // Clear the form after submission
           $("#friend-name").val("");
           $("#friend-photo").val("");
           $("#friendQuestion1").val("Select an Option");
