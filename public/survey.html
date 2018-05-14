@@ -106,7 +106,7 @@
               </div>
 
               <br>
-              <button type="submit" class="btn btn-primary submit">Submit</button>
+              <button type="submit" id="myBtn" class="btn btn-primary submit">Submit</button>
 
               <hr>
 
@@ -126,6 +126,42 @@
     </footer>
 
   </div>
+
+
+
+
+
+
+  <div class="container">
+  
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+  
+
+
+
+
+
 
 </body>
 </html>
@@ -163,7 +199,8 @@
 
           // Display the best friend's name
           console.log(data)
-          alert("Your new best friend is " + data.friendName + "\n" + data.friendPhoto)
+          // alert("Your new best friend is " + data.friendName + "\n" + data.friendPhoto)
+          $("#myModal").modal();
 
           // Clear the form after submission
           $("#friend-name").val("");
