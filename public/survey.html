@@ -142,10 +142,11 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
+            <!-- <h4 class="modal-title">Modal Header</h4> -->
           </div>
           <div class="modal-body">
             <p id="matchName">Some text in the modal.</p>
+            <img id="matchImg" src="" alt="" height="" width="200">
           </div>
           <div class="modal-footer">
             <button type="button" id="closeModal" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -183,8 +184,8 @@
         };
         if (validateForm()) {
           var friendsData = {
-              friendName: $("#name").val(),
-              friendPhoto: $("#photo").val(),
+              friendName: $("#friend-name").val(),
+              friendPhoto: $("#friend-photo").val(),
               scores: [
               $("#friendQuestion1").val(),
               $("#friendQuestion2").val(),
@@ -201,7 +202,8 @@
           console.log(data)
           
           // Alert("Your new best friend is " + data.friendName + "\n" + data.friendPhoto)
-          $("#matchName").text("Your closes match is " + data.friendName);
+          $("#matchName").text("Your closest match is " + data.friendName);
+          $("#matchImg").attr("src",data.friendPhoto)
           $("#myModal").modal();
 
           // Refresh page

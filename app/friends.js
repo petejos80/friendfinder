@@ -26,14 +26,47 @@ var friendsData = [
       ],
     },
     {
-      friendName: "Craig Ferguson",
+      friendName: "Andrew Garfield",
+      friendPhoto: "https://cdni.rbth.com/rbthmedia/images/all/2017/05/28/russia_selfie.jpg",
+      scores:[
+        "5",
+        "4",
+        "3",
+        "1",
+        "1",
+      ],
+    },
+    {
+      friendName: "John Anderson",
       friendPhoto: "https://cdni.rbth.com/rbthmedia/images/all/2017/05/28/russia_selfie.jpg",
       scores:[
         "4",
         "4",
+        "1",
+        "2",
+        "3",
+      ],
+    },
+    {
+      friendName: "Chester Beddington",
+      friendPhoto: "https://cdni.rbth.com/rbthmedia/images/all/2017/05/28/russia_selfie.jpg",
+      scores:[
+        "5",
         "4",
         "4",
+        "3",
+        "2",
+      ],
+    },
+    {
+      friendName: "Craig Ferguson",
+      friendPhoto: "https://cdni.rbth.com/rbthmedia/images/all/2017/05/28/russia_selfie.jpg",
+      scores:[
         "4",
+        "2",
+        "5",
+        "2",
+        "2",
       ],
     },
   ];
