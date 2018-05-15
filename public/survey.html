@@ -96,7 +96,7 @@
                 <h4 class="panel-title">Question 5</h4>
                 <label for="exampleFormControlSelect1">People can rarely upset you.</label>
                 <select class="form-control" id="friendQuestion5">
-                  <option value=>Select an Option</option>
+                  <option value="" disabled selected>Select an Option</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -145,10 +145,10 @@
             <h4 class="modal-title">Modal Header</h4>
           </div>
           <div class="modal-body">
-            <p>Some text in the modal.</p>
+            <p id="matchName">Some text in the modal.</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="closeModal" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
         
@@ -199,18 +199,24 @@
 
           // Display the best friend's name
           console.log(data)
-          // alert("Your new best friend is " + data.friendName + "\n" + data.friendPhoto)
-          $ ("#myModal .modal-content").append("<p>" + friendsData.friendName + "</p>");
+          
+          // Alert("Your new best friend is " + data.friendName + "\n" + data.friendPhoto)
+          $("#matchName").text("Your closes match is " + data.friendName);
           $("#myModal").modal();
+
+          // Refresh page
+          $("#closeModal").on("click", function(event) {
+          location.reload();
+          });
 
           // Clear the form after submission
           $("#friend-name").val("");
           $("#friend-photo").val("");
-          $("#friendQuestion1").val();
-          $("#friendQuestion2").val();
-          $("#friendQuestion3").val();
-          $("#friendQuestion4").val();
-          $("#friendQuestion5").val();
+          $("#friendQuestion1").val("");
+          $("#friendQuestion2").val("");
+          $("#friendQuestion3").val("");
+          $("#friendQuestion4").val("");
+          $("#friendQuestion5").val("");
         });
 
       } else{
